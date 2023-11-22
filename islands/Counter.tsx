@@ -7,10 +7,10 @@ interface CounterProps {
 
 export default function Counter(props: CounterProps) {
   return (
-    <div class="flex gap-8 py-6">
-      <Button onClick={() => props.count.value -= 1}>-1</Button>
-      <p class="text-3xl">{props.count}</p>
-      <Button onClick={() => props.count.value += 1}>+1</Button>
+    <div class="d-flex align-items-center" style="gap: 2rem;">
+      <Button class="btn-danger" onClick={() => props.count.value -= 1}>-1</Button>
+      <span class="h3 m-0">{props.count}</span>
+      <Button class="btn-success" onClick={() => props.count.value += 1}>+1</Button>
     </div>
   );
 }
