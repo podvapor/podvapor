@@ -7,3 +7,6 @@
 
 # Fresh build directory
 _fresh/
+/db/db.sqlite*
+
+node_modules
