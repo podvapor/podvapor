@@ -10,3 +10,5 @@ _fresh/
 /db/db.sqlite*
 
 node_modules
+/tmp/**/*
+!/tmp/.gitkeep
