@@ -1,25 +1,39 @@
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import { db } from "../db/db.ts";
+import { podcasts as podcastsSchema } from "../db/schema.ts";
+import { Handlers, PageProps } from "$fresh/src/server/types.ts";
 
-export default function Home() {
-  const count = useSignal(3);
+export const handler: Handlers = {
+  async GET(_req, ctx) {
+    const podcasts = await db.select().from(podcastsSchema)
+    return ctx.render(podcasts)
+  }
+}
+
+export default function Home(props: PageProps) {
   return (
     <div class="container">
-      <div class="d-flex flex-column align-items-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
+      { props.data.map(pc => <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                  <img src={ pc.coverImageUrl } class="mb-3 w-100" alt="" />
+                </div>
+                <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+                  <h2 class="card-title"><a href="">{ pc.title }</a></h2>
+                  <p>{ pc.description }</p>
+                  <ul>
+                    <li><a data-turbo="false" href="">RSS Feed</a></li>
+                    { pc.links.map((lk, index) => <li><a href={ lk.link }>{ lk.name }</a></li>) }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
