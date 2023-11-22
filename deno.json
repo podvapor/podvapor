@@ -30,7 +30,6 @@
     "drizzle-orm/sqlite-core": "npm:drizzle-orm/sqlite-core",
     "drizzle-orm/libsql": "npm:drizzle-orm/libsql",
     "drizzle-orm/libsql/migrator": "npm:drizzle-orm/libsql/migrator",
-    "@paralleldrive/cuid2": "npm:@paralleldrive/cuid2",
     "@libsql/client": "npm:@libsql/client"
   },
   "compilerOptions": {
