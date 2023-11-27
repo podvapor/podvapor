@@ -3,7 +3,7 @@ import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema.ts'
 
 const config = {
-  url: 'http://0.0.0.0:8080'
+  url: Deno.env.get('DB_URL') as string
 }
 
 export const client = createClient(config)

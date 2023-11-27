@@ -6,7 +6,9 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "db": "turso dev --db-file db/db.sqlite"
+    "db": "turso dev --db-file db/db.sqlite",
+    "create-migration": "pnpm drizzle-kit generate:sqlite",
+    "migrate": "deno run -A db/migrate.ts"
   },
   "lint": {
     "rules": {
