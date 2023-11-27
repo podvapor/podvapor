@@ -1,5 +1,6 @@
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import { PublicLayout } from "../components/PublicLayout.tsx";
 import { db } from "../db/db.ts";
 import { podcasts as podcastsSchema } from "../db/schema.ts";
 import { Handlers, PageProps } from "$fresh/src/server/types.ts";
@@ -13,7 +14,7 @@ export const handler: Handlers = {
 
 export default function Home(props: PageProps) {
   return (
-    <div class="container">
+    <PublicLayout>
       { props.data.map(pc => <div class="col-12">
           <div class="card">
             <div class="card-body">
@@ -33,7 +34,7 @@ export default function Home(props: PageProps) {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      ) }
+    </PublicLayout>
   );
 }
