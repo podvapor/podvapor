@@ -23,7 +23,7 @@ export default function Home(props: PageProps) {
                   <img src={ pc.coverImageUrl } class="mb-3 w-100" alt="" />
                 </div>
                 <div class="col-12 col-sm-8 col-md-9 col-lg-10">
-                  <h2 class="card-title"><a href="">{ pc.title }</a></h2>
+                  <h2 class="card-title"><a href={ '/' + pc.slug }>{ pc.title }</a></h2>
                   <p>{ pc.description }</p>
                   <ul>
                     <li><a data-turbo="false" href="">RSS Feed</a></li>
