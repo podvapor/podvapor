@@ -1,15 +1,22 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { PublicLayout } from "../components/PublicLayout.tsx";
-import { podcasts as podcastsSchema } from "../db/schema.ts";
+import PlayerEpisode from "../islands/PlayerEpisode.tsx";
+import { episodes as episodesSchema, podcasts as podcastsSchema } from "../db/schema.ts";
 import { db } from "../db/db.ts";
 import { eq } from 'drizzle-orm'
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
-    console.log(ctx)
     const podcast = await db.query.podcasts.findFirst({
-      where: eq(podcastsSchema.slug, ctx.params.podcast)
+      where: eq(podcastsSchema.slug, ctx.params.podcast),
     })
+
+    const episodes = await db.query.episodes.findMany({
+      where: eq(episodesSchema.podcastId, podcast.id)
+    })
+
+    podcast.episodes = episodes
+
     return ctx.render(podcast)
   }
 }
@@ -29,6 +36,15 @@ export default function Podcast(props: PageProps) {
             { props.data.links.map((lk, index) => <li><a href={ lk.link }>{ lk.name }</a></li>) }
           </ul>
         </div>
+      </div>
+
+      <h2 class="my-3">Episodes</h2>
+      <div class="row g-4">
+        { props.data.episodes.map(ep => 
+        <div class="col-12">
+          <PlayerEpisode { ...ep } podcast={ props.data } />
+        </div>
+        ) }
       </div>
     </PublicLayout>
 }

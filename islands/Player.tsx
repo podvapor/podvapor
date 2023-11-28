@@ -9,15 +9,27 @@ export default function Player() {
   const [episode, setEpisode] = useState({
     title: '',
     podcast_title: '',
-    audio_url: 'https://podcast-media.sweeney.digital/episode_audio_files/72a6c29c-2414-4292-9289-5e6db8dda81b.mp3',
+    audio_url: '',
   })
 
   useEffect(() => {
-    playerRef.current.src = episode.audio_url
+    document.addEventListener('update-player', (e) => {
+      setEpisode({
+        title: e.detail.title,
+        podcast_title: e.detail.podcast.title,
+        audio_url: e.detail.audio.url
+      })
+
+      setShowing(true)
+    })
     
     const player = new Plyr('#global-player')
+  }, [])
 
-    setShowing(true)
+  useEffect(() => {
+    playerRef.current.pause()
+    playerRef.current.src = episode.audio_url
+    playerRef.current.play()
   }, [episode])
 
  return <div 
