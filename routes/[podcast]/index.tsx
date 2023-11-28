@@ -1,9 +1,10 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { PublicLayout } from "../components/PublicLayout.tsx";
-import PlayerEpisode from "../islands/PlayerEpisode.tsx";
-import { episodes as episodesSchema, podcasts as podcastsSchema } from "../db/schema.ts";
-import { db } from "../db/db.ts";
+import { PublicLayout } from "../../components/PublicLayout.tsx";
+import PlayerEpisode from "../../islands/PlayerEpisode.tsx";
+import { episodes as episodesSchema, podcasts as podcastsSchema } from "../../db/schema.ts";
+import { db } from "../../db/db.ts";
 import { eq } from 'drizzle-orm'
+import { convertDateForWeb } from "../../helpers.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -42,7 +43,14 @@ export default function Podcast(props: PageProps) {
       <div class="row g-4">
         { props.data.episodes.map(ep => 
         <div class="col-12">
-          <PlayerEpisode { ...ep } podcast={ props.data } />
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title"><a href={ '/' + props.data.slug + '/' + ep.id }>{ ep.title }</a></h3>
+              <em class="text-secondary-emphasis">{ convertDateForWeb(ep.published) }</em>
+              <p class="mt-2">{ ep.description }</p>
+              <PlayerEpisode { ...ep } podcast={ props.data } />
+            </div> 
+          </div>
         </div>
         ) }
       </div>
