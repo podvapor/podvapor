@@ -1,11 +1,19 @@
 import { JSX } from "preact";
-import { Partial } from "$fresh/runtime.ts";
+import { Partial, Head } from "$fresh/runtime.ts";
+import Player from '../islands/Player.tsx'
 
 export function PublicLayout(props) {
-  return <div class="container pt-3" f-client-nav>
-    <Partial name="public-page">
-      { props.children }
-    </Partial>
-    <audio controls src="https://podcast-media.sweeney.digital/episode_audio_files/72a6c29c-2414-4292-9289-5e6db8dda81b.mp3"></audio>
-  </div>
+  return <>
+    <Head>
+      <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+      <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+      <link rel="stylesheet" href="/app.css" />
+    </Head>
+    <div class="container pt-3" f-client-nav>
+      <Partial name="public-page">
+        { props.children }
+      </Partial>
+      <Player />
+    </div>
+  </>
 }
