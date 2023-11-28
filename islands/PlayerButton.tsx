@@ -1,4 +1,4 @@
-export default function PlayerEpisode(props) {
+export default function PlayerButton(props) {
 
   function updatePlayer(episode) {
     const event = new CustomEvent('update-player', {

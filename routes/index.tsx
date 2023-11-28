@@ -1,5 +1,3 @@
-import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
 import { PublicLayout } from "../components/PublicLayout.tsx";
 import { db } from "../db/db.ts";
 import { podcasts as podcastsSchema } from "../db/schema.ts";

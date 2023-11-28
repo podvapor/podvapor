@@ -4,7 +4,7 @@ import { db } from "../../../db/db.ts";
 import { eq } from "drizzle-orm";
 import { convertDateForWeb } from "../../../helpers.ts";
 import { PublicLayout } from "../../../components/PublicLayout.tsx";
-import PlayerEpisode from "../../../islands/PlayerEpisode.tsx";
+import PlayerButton from "../../../islands/PlayerButton.tsx";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -29,7 +29,7 @@ export default function Episode(props: PageProps) {
       <h1>{ props.data.title }</h1>
       <em class="text-secondary-emphasis">{ convertDateForWeb(props.data.published) }</em>
       <p class="mt-2" dangerouslySetInnerHTML={{ __html: props.data.notes }}></p>
-      <PlayerEpisode { ...props.data } />
+      <PlayerButton { ...props.data } />
     </div>
   </PublicLayout>
 }
