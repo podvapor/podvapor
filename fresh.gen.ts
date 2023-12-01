@@ -6,9 +6,12 @@ import * as $0 from "./routes/[podcast]/[episode_id]/index.tsx";
 import * as $1 from "./routes/[podcast]/index.tsx";
 import * as $2 from "./routes/_404.tsx";
 import * as $3 from "./routes/_app.tsx";
-import * as $4 from "./routes/index.tsx";
-import * as $$0 from "./islands/Player.tsx";
-import * as $$1 from "./islands/PlayerButton.tsx";
+import * as $4 from "./routes/auth/login-meta.tsx";
+import * as $5 from "./routes/auth/login.tsx";
+import * as $6 from "./routes/index.tsx";
+import * as $$0 from "./islands/LoginIsland.tsx";
+import * as $$1 from "./islands/Player.tsx";
+import * as $$2 from "./islands/PlayerButton.tsx";
 
 const manifest = {
   routes: {
@@ -16,11 +19,14 @@ const manifest = {
     "./routes/[podcast]/index.tsx": $1,
     "./routes/_404.tsx": $2,
     "./routes/_app.tsx": $3,
-    "./routes/index.tsx": $4,
+    "./routes/auth/login-meta.tsx": $4,
+    "./routes/auth/login.tsx": $5,
+    "./routes/index.tsx": $6,
   },
   islands: {
-    "./islands/Player.tsx": $$0,
-    "./islands/PlayerButton.tsx": $$1,
+    "./islands/LoginIsland.tsx": $$0,
+    "./islands/Player.tsx": $$1,
+    "./islands/PlayerButton.tsx": $$2,
   },
   baseUrl: import.meta.url,
 };
