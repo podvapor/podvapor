@@ -2,41 +2,42 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/[podcast]/[episode_id]/index.tsx";
-import * as $1 from "./routes/[podcast]/index.tsx";
-import * as $2 from "./routes/_404.tsx";
-import * as $3 from "./routes/_app.tsx";
-import * as $4 from "./routes/admin/podcasts.tsx";
-import * as $5 from "./routes/auth/login-meta.tsx";
-import * as $6 from "./routes/auth/login/_middleware.ts";
-import * as $7 from "./routes/auth/login/index.tsx";
-import * as $8 from "./routes/auth/logout/_middleware.ts";
-import * as $9 from "./routes/auth/logout/index.ts";
-import * as $10 from "./routes/index.tsx";
-import * as $$0 from "./islands/LoginIsland.tsx";
-import * as $$1 from "./islands/Player.tsx";
-import * as $$2 from "./islands/PlayerButton.tsx";
+import * as $_podcast_episode_id_index from "./routes/[podcast]/[episode_id]/index.tsx";
+import * as $_podcast_index from "./routes/[podcast]/index.tsx";
+import * as $_404 from "./routes/_404.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $admin_podcasts from "./routes/admin/podcasts.tsx";
+import * as $auth_login_meta from "./routes/auth/login-meta.tsx";
+import * as $auth_login_middleware from "./routes/auth/login/_middleware.ts";
+import * as $auth_login_index from "./routes/auth/login/index.tsx";
+import * as $auth_logout_middleware from "./routes/auth/logout/_middleware.ts";
+import * as $auth_logout_index from "./routes/auth/logout/index.ts";
+import * as $index from "./routes/index.tsx";
+import * as $LoginIsland from "./islands/LoginIsland.tsx";
+import * as $Player from "./islands/Player.tsx";
+import * as $PlayerButton from "./islands/PlayerButton.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/[podcast]/[episode_id]/index.tsx": $0,
-    "./routes/[podcast]/index.tsx": $1,
-    "./routes/_404.tsx": $2,
-    "./routes/_app.tsx": $3,
-    "./routes/admin/podcasts.tsx": $4,
-    "./routes/auth/login-meta.tsx": $5,
-    "./routes/auth/login/_middleware.ts": $6,
-    "./routes/auth/login/index.tsx": $7,
-    "./routes/auth/logout/_middleware.ts": $8,
-    "./routes/auth/logout/index.ts": $9,
-    "./routes/index.tsx": $10,
+    "./routes/[podcast]/[episode_id]/index.tsx": $_podcast_episode_id_index,
+    "./routes/[podcast]/index.tsx": $_podcast_index,
+    "./routes/_404.tsx": $_404,
+    "./routes/_app.tsx": $_app,
+    "./routes/admin/podcasts.tsx": $admin_podcasts,
+    "./routes/auth/login-meta.tsx": $auth_login_meta,
+    "./routes/auth/login/_middleware.ts": $auth_login_middleware,
+    "./routes/auth/login/index.tsx": $auth_login_index,
+    "./routes/auth/logout/_middleware.ts": $auth_logout_middleware,
+    "./routes/auth/logout/index.ts": $auth_logout_index,
+    "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/LoginIsland.tsx": $$0,
-    "./islands/Player.tsx": $$1,
-    "./islands/PlayerButton.tsx": $$2,
+    "./islands/LoginIsland.tsx": $LoginIsland,
+    "./islands/Player.tsx": $Player,
+    "./islands/PlayerButton.tsx": $PlayerButton,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;
