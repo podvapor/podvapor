@@ -55,6 +55,7 @@ export default function LoginIsland() {
       if (result.status === 401) {
         const newError = (await result.json()).error
         setError(newError)
+        setSubmitting(false)
       }
 
       if (result.status === 200) {
@@ -62,9 +63,8 @@ export default function LoginIsland() {
       }
     } else {
       setError('email must be provided')
+      setSubmitting(false)
     }
-    
-    setSubmitting(false)
   }
 
   return <div class="container">

@@ -10,7 +10,9 @@ import * as $4 from "./routes/admin/podcasts.tsx";
 import * as $5 from "./routes/auth/login-meta.tsx";
 import * as $6 from "./routes/auth/login/_middleware.ts";
 import * as $7 from "./routes/auth/login/index.tsx";
-import * as $8 from "./routes/index.tsx";
+import * as $8 from "./routes/auth/logout/_middleware.ts";
+import * as $9 from "./routes/auth/logout/index.ts";
+import * as $10 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginIsland.tsx";
 import * as $$1 from "./islands/Player.tsx";
 import * as $$2 from "./islands/PlayerButton.tsx";
@@ -25,7 +27,9 @@ const manifest = {
     "./routes/auth/login-meta.tsx": $5,
     "./routes/auth/login/_middleware.ts": $6,
     "./routes/auth/login/index.tsx": $7,
-    "./routes/index.tsx": $8,
+    "./routes/auth/logout/_middleware.ts": $8,
+    "./routes/auth/logout/index.ts": $9,
+    "./routes/index.tsx": $10,
   },
   islands: {
     "./islands/LoginIsland.tsx": $$0,
