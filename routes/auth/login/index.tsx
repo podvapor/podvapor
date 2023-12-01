@@ -9,6 +9,17 @@ export type Data = { session: Record<string, unknown> }
 
 export const handler: Handlers<Data,WithSession> = {
   GET(req, ctx) {
+    const { session } = ctx.state
+
+    if (session.has('user_id')) {
+      return new Response(null, {
+        status: 303,
+        headers: {
+          'location': '/admin/podcasts'
+        }
+      })
+    }
+
     return ctx.render()
   },
 

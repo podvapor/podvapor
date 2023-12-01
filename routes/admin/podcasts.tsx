@@ -1,7 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { episodes as episodesSchema, podcasts as podcastsSchema } from "../../db/schema.ts";
 import { db } from "../../db/db.ts";
-import { eq } from 'drizzle-orm'
 import { AdminLayout } from "../../components/AdminLayout.tsx";
 
 export const handler: Handlers = {

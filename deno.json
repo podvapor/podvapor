@@ -25,7 +25,7 @@
     "drizzle-orm/libsql": "npm:drizzle-orm/libsql",
     "drizzle-orm/libsql/migrator": "npm:drizzle-orm/libsql/migrator",
     "@libsql/client": "npm:@libsql/client",
-    "fresh-session": "https://deno.land/x/fresh_session@0.2.4/mod.ts"
+    "fresh-session": "../../../github/fresh-session/mod.ts"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
 }
