@@ -9,6 +9,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $admin_middleware from "./routes/admin/_middleware.ts";
 import * as $admin_index from "./routes/admin/index.ts";
 import * as $admin_podcasts from "./routes/admin/podcasts.tsx";
+import * as $admin_settings from "./routes/admin/settings.tsx";
 import * as $auth_index from "./routes/auth/index.ts";
 import * as $auth_login_meta from "./routes/auth/login-meta.tsx";
 import * as $auth_login_middleware from "./routes/auth/login/_middleware.ts";
@@ -30,6 +31,7 @@ const manifest = {
     "./routes/admin/_middleware.ts": $admin_middleware,
     "./routes/admin/index.ts": $admin_index,
     "./routes/admin/podcasts.tsx": $admin_podcasts,
+    "./routes/admin/settings.tsx": $admin_settings,
     "./routes/auth/index.ts": $auth_index,
     "./routes/auth/login-meta.tsx": $auth_login_meta,
     "./routes/auth/login/_middleware.ts": $auth_login_middleware,
