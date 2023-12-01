@@ -4,7 +4,7 @@ import { IS_BROWSER } from "$fresh/runtime.ts"
 import "preact/debug"
 
 export default function LoginIsland() {
-  const [email, setEmail] = useState('test@example.com')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)

@@ -33,7 +33,8 @@
     "drizzle-orm/sqlite-core": "npm:drizzle-orm/sqlite-core",
     "drizzle-orm/libsql": "npm:drizzle-orm/libsql",
     "drizzle-orm/libsql/migrator": "npm:drizzle-orm/libsql/migrator",
-    "@libsql/client": "npm:@libsql/client"
+    "@libsql/client": "npm:@libsql/client",
+    "fresh-session": "https://deno.land/x/fresh_session@0.2.4/mod.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

@@ -6,9 +6,11 @@ import * as $0 from "./routes/[podcast]/[episode_id]/index.tsx";
 import * as $1 from "./routes/[podcast]/index.tsx";
 import * as $2 from "./routes/_404.tsx";
 import * as $3 from "./routes/_app.tsx";
-import * as $4 from "./routes/auth/login-meta.tsx";
-import * as $5 from "./routes/auth/login.tsx";
-import * as $6 from "./routes/index.tsx";
+import * as $4 from "./routes/admin/podcasts.tsx";
+import * as $5 from "./routes/auth/login-meta.tsx";
+import * as $6 from "./routes/auth/login/_middleware.ts";
+import * as $7 from "./routes/auth/login/index.tsx";
+import * as $8 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginIsland.tsx";
 import * as $$1 from "./islands/Player.tsx";
 import * as $$2 from "./islands/PlayerButton.tsx";
@@ -19,9 +21,11 @@ const manifest = {
     "./routes/[podcast]/index.tsx": $1,
     "./routes/_404.tsx": $2,
     "./routes/_app.tsx": $3,
-    "./routes/auth/login-meta.tsx": $4,
-    "./routes/auth/login.tsx": $5,
-    "./routes/index.tsx": $6,
+    "./routes/admin/podcasts.tsx": $4,
+    "./routes/auth/login-meta.tsx": $5,
+    "./routes/auth/login/_middleware.ts": $6,
+    "./routes/auth/login/index.tsx": $7,
+    "./routes/index.tsx": $8,
   },
   islands: {
     "./islands/LoginIsland.tsx": $$0,
