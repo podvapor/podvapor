@@ -1,12 +1,37 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { db } from "../../db/db.ts";
-import { AdminLayout } from "../../components/AdminLayout.tsx";
+import { db } from "../../../db/db.ts";
+import { AdminLayout } from "../../../components/AdminLayout.tsx";
+
+import { podcasts as podcastsSchema } from "../../../db/schema.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
     const podcasts = await db.query.podcasts.findMany()
 
     return ctx.render(podcasts)
+  },
+
+  async POST(req, ctx) {
+    const form = await req.json()
+
+    await db.insert(podcastsSchema).values({
+      id: form.id,
+      title: form.title,
+      slug: form.slug,
+      description: form.description,
+      categories: form.categories,
+      owner: { name: form.owner.name, email: form.owner.email },
+      author: form.author,
+      copyright: form.copyright,
+      coverImageUrl: form.cover_image_url
+    })
+
+    return new Response(null, {
+      status: 303,
+      headers: {
+        location: '/admin/podcasts'
+      }
+    })
   }
 }
 

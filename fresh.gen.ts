@@ -9,7 +9,9 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $admin_middleware from "./routes/admin/_middleware.ts";
 import * as $admin_index from "./routes/admin/index.ts";
-import * as $admin_podcasts from "./routes/admin/podcasts.tsx";
+import * as $admin_podcasts_create_image_upload_url from "./routes/admin/podcasts/create/image-upload-url.ts";
+import * as $admin_podcasts_create_index from "./routes/admin/podcasts/create/index.tsx";
+import * as $admin_podcasts_index from "./routes/admin/podcasts/index.tsx";
 import * as $admin_settings from "./routes/admin/settings.tsx";
 import * as $auth_index from "./routes/auth/index.ts";
 import * as $auth_login_meta from "./routes/auth/login-meta.tsx";
@@ -18,6 +20,7 @@ import * as $auth_login_index from "./routes/auth/login/index.tsx";
 import * as $auth_logout_middleware from "./routes/auth/logout/_middleware.ts";
 import * as $auth_logout_index from "./routes/auth/logout/index.ts";
 import * as $index from "./routes/index.tsx";
+import * as $CreatePodcastIsland from "./islands/CreatePodcastIsland.tsx";
 import * as $LoginIsland from "./islands/LoginIsland.tsx";
 import * as $Player from "./islands/Player.tsx";
 import * as $PlayerButton from "./islands/PlayerButton.tsx";
@@ -32,7 +35,10 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/admin/_middleware.ts": $admin_middleware,
     "./routes/admin/index.ts": $admin_index,
-    "./routes/admin/podcasts.tsx": $admin_podcasts,
+    "./routes/admin/podcasts/create/image-upload-url.ts":
+      $admin_podcasts_create_image_upload_url,
+    "./routes/admin/podcasts/create/index.tsx": $admin_podcasts_create_index,
+    "./routes/admin/podcasts/index.tsx": $admin_podcasts_index,
     "./routes/admin/settings.tsx": $admin_settings,
     "./routes/auth/index.ts": $auth_index,
     "./routes/auth/login-meta.tsx": $auth_login_meta,
@@ -43,6 +49,7 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/CreatePodcastIsland.tsx": $CreatePodcastIsland,
     "./islands/LoginIsland.tsx": $LoginIsland,
     "./islands/Player.tsx": $Player,
     "./islands/PlayerButton.tsx": $PlayerButton,
