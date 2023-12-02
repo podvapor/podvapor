@@ -9,6 +9,7 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $admin_middleware from "./routes/admin/_middleware.ts";
 import * as $admin_index from "./routes/admin/index.ts";
+import * as $admin_podcasts_podcast_index from "./routes/admin/podcasts/[podcast]/index.tsx";
 import * as $admin_podcasts_create_image_upload_url from "./routes/admin/podcasts/create/image-upload-url.ts";
 import * as $admin_podcasts_create_index from "./routes/admin/podcasts/create/index.tsx";
 import * as $admin_podcasts_index from "./routes/admin/podcasts/index.tsx";
@@ -35,6 +36,8 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/admin/_middleware.ts": $admin_middleware,
     "./routes/admin/index.ts": $admin_index,
+    "./routes/admin/podcasts/[podcast]/index.tsx":
+      $admin_podcasts_podcast_index,
     "./routes/admin/podcasts/create/image-upload-url.ts":
       $admin_podcasts_create_image_upload_url,
     "./routes/admin/podcasts/create/index.tsx": $admin_podcasts_create_index,

@@ -69,7 +69,7 @@ export default function LoginIsland() {
 
   return <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
-      <form onSubmit={submit}>
+      <form onSubmit={submit} class="col-sm-8 col-md-6 col-lg-4">
         { error && <div class="alert alert-danger" role="alert">
           { error }
         </div> }

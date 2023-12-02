@@ -49,7 +49,7 @@ export default function Podcasts(props: PageProps) {
                   <img src={ pc.coverImageUrl } class="mb-3 w-100" alt="" />
                 </div>
                 <div class="col-12 col-sm-8 col-md-9 col-lg-10">
-                  <h2 class="card-title"><a href="#">{ pc.title }</a></h2>
+                  <h2 class="card-title"><a href={ `/admin/podcasts/${ pc.slug }` }>{ pc.title }</a></h2>
                   <p>{ pc.description }</p>
                 </div>
               </div>
