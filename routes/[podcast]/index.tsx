@@ -32,9 +32,9 @@ export default function Podcast(props: PageProps) {
           <a href="/">Back to podcasts</a>
           <h1>{ props.data.title }</h1>
           <p>{ props.data.description }</p>
-          <ul>
+          <ul f-client-nav={ false }>
             <li><a href={ Deno.env.get('DOMAIN') + '/' + props.data.slug + '/feed' }>RSS Feed</a></li>
-            { props.data.links.map((lk, index) => <li><a href={ lk.link }>{ lk.name }</a></li>) }
+            { props.data.links?.map((lk, index) => <li><a href={ lk.link }>{ lk.name }</a></li>) }
           </ul>
         </div>
       </div>

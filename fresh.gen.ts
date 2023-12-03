@@ -8,10 +8,13 @@ import * as $_podcast_index from "./routes/[podcast]/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $admin_middleware from "./routes/admin/_middleware.ts";
+import * as $admin_episodes_audio_upload_url from "./routes/admin/episodes/audio-upload-url.ts";
+import * as $admin_episodes_index from "./routes/admin/episodes/index.ts";
 import * as $admin_index from "./routes/admin/index.ts";
 import * as $admin_podcasts_podcast_index from "./routes/admin/podcasts/[podcast]/index.tsx";
-import * as $admin_podcasts_create_image_upload_url from "./routes/admin/podcasts/create/image-upload-url.ts";
+import * as $admin_podcasts_podcast_new_index from "./routes/admin/podcasts/[podcast]/new/index.tsx";
 import * as $admin_podcasts_create_index from "./routes/admin/podcasts/create/index.tsx";
+import * as $admin_podcasts_image_upload_url from "./routes/admin/podcasts/image-upload-url.ts";
 import * as $admin_podcasts_index from "./routes/admin/podcasts/index.tsx";
 import * as $admin_settings from "./routes/admin/settings.tsx";
 import * as $auth_index from "./routes/auth/index.ts";
@@ -21,6 +24,7 @@ import * as $auth_login_index from "./routes/auth/login/index.tsx";
 import * as $auth_logout_middleware from "./routes/auth/logout/_middleware.ts";
 import * as $auth_logout_index from "./routes/auth/logout/index.ts";
 import * as $index from "./routes/index.tsx";
+import * as $CreateEpisodeIsland from "./islands/CreateEpisodeIsland.tsx";
 import * as $CreatePodcastIsland from "./islands/CreatePodcastIsland.tsx";
 import * as $LoginIsland from "./islands/LoginIsland.tsx";
 import * as $Player from "./islands/Player.tsx";
@@ -35,12 +39,17 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/admin/_middleware.ts": $admin_middleware,
+    "./routes/admin/episodes/audio-upload-url.ts":
+      $admin_episodes_audio_upload_url,
+    "./routes/admin/episodes/index.ts": $admin_episodes_index,
     "./routes/admin/index.ts": $admin_index,
     "./routes/admin/podcasts/[podcast]/index.tsx":
       $admin_podcasts_podcast_index,
-    "./routes/admin/podcasts/create/image-upload-url.ts":
-      $admin_podcasts_create_image_upload_url,
+    "./routes/admin/podcasts/[podcast]/new/index.tsx":
+      $admin_podcasts_podcast_new_index,
     "./routes/admin/podcasts/create/index.tsx": $admin_podcasts_create_index,
+    "./routes/admin/podcasts/image-upload-url.ts":
+      $admin_podcasts_image_upload_url,
     "./routes/admin/podcasts/index.tsx": $admin_podcasts_index,
     "./routes/admin/settings.tsx": $admin_settings,
     "./routes/auth/index.ts": $auth_index,
@@ -52,6 +61,7 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/CreateEpisodeIsland.tsx": $CreateEpisodeIsland,
     "./islands/CreatePodcastIsland.tsx": $CreatePodcastIsland,
     "./islands/LoginIsland.tsx": $LoginIsland,
     "./islands/Player.tsx": $Player,

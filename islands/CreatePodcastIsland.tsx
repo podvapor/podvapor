@@ -48,7 +48,7 @@ export default function CreatePodcastIsland() {
   async function submit(e) {
     e.preventDefault()
 
-    const imageResponse = await fetch('/admin/podcasts/create/image-upload-url', {
+    const imageResponse = await fetch('/admin/podcasts/image-upload-url', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
