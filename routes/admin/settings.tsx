@@ -3,6 +3,7 @@ import { db } from "../../db/db.ts"
 import { eq } from "drizzle-orm"
 import { settings as settingsSchema } from "../../db/schema.ts"
 import { AdminLayout } from "../../components/AdminLayout.tsx"
+import { SettingsService } from "../../services/SettingsService.ts"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -16,7 +17,7 @@ export const handler: Handlers = {
   async POST(req, ctx) {
     const form = await req.formData()
 
-    await db.update(settingsSchema).set({ value: form.get('site_name') }).where(eq(settingsSchema.key, 'site_name'))
+    await SettingsService.set('site_name', form.get('site_name') as string)
 
     return new Response(null, {
       status: 303,

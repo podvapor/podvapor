@@ -2,19 +2,24 @@ import { PublicLayout } from "../components/PublicLayout.tsx";
 import { db } from "../db/db.ts";
 import { podcasts as podcastsSchema } from "../db/schema.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { SettingsService } from "../services/SettingsService.ts";
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
     const podcasts = await db.select().from(podcastsSchema)
-    return ctx.render(podcasts)
+    const siteName = await SettingsService.get('site_name')
+
+    return ctx.render({podcasts, siteName})
   }
 }
 
 export default function Home(props: PageProps) {
   return (
     <PublicLayout>
-      { props.data.map((pc, pcIndex) => <div class="col-12">
-          <div class={ `card ${ pcIndex > 0 && 'mt-3' }` }>
+      <h1>{ props.data.siteName }</h1>
+
+      { props.data.podcasts.map((pc, pcIndex) => <div class="col-12 mt-3">
+          <div class={ `card` }>
             <div class="card-body">
               <div class="row">
                 <div class="col-12 col-sm-4 col-md-3 col-lg-2">
