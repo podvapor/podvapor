@@ -6,7 +6,6 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 export const handler: Handlers = {
   async GET(_req, ctx) {
     const podcasts = await db.select().from(podcastsSchema)
-    console.log(podcasts)
     return ctx.render(podcasts)
   }
 }
