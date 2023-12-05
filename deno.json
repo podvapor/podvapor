@@ -25,7 +25,7 @@
     "drizzle-orm/libsql": "npm:drizzle-orm/libsql",
     "drizzle-orm/libsql/migrator": "npm:drizzle-orm/libsql/migrator",
     "@libsql/client": "npm:@libsql/client",
-    "fresh-session": "../../../github/fresh-session/mod.ts",
+    "fresh-session": "https://raw.githubusercontent.com/jcs224/fresh-session/cookie-encryption/mod.ts",
     "aws-s3-presign": "https://raw.githubusercontent.com/jcs224/aws_s3_presign/custom-protocol/mod.ts"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
