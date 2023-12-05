@@ -23,6 +23,7 @@ import * as $auth_login_middleware from "./routes/auth/login/_middleware.ts";
 import * as $auth_login_index from "./routes/auth/login/index.tsx";
 import * as $auth_logout_middleware from "./routes/auth/logout/_middleware.ts";
 import * as $auth_logout_index from "./routes/auth/logout/index.ts";
+import * as $episode_audio_id_mp3 from "./routes/episode/audio/[id].mp3.ts";
 import * as $index from "./routes/index.tsx";
 import * as $CreateEpisodeIsland from "./islands/CreateEpisodeIsland.tsx";
 import * as $CreatePodcastIsland from "./islands/CreatePodcastIsland.tsx";
@@ -58,6 +59,7 @@ const manifest = {
     "./routes/auth/login/index.tsx": $auth_login_index,
     "./routes/auth/logout/_middleware.ts": $auth_logout_middleware,
     "./routes/auth/logout/index.ts": $auth_logout_index,
+    "./routes/episode/audio/[id].mp3.ts": $episode_audio_id_mp3,
     "./routes/index.tsx": $index,
   },
   islands: {
