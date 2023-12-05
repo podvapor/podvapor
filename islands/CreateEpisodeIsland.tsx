@@ -133,14 +133,18 @@ export default function CreateEpisodeIsland(props) {
   }
 
   useEffect(() => {
+    const darkMode = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? true : false
+
+    console.log(darkMode)
+
     // @ts-ignore tinymce is a global browser dep
     tinymce.init({
       selector: 'textarea#notes',
       promotion: false,
       plugins: ['lists', 'link'],
       toolbar: 'undo redo | styles | bold italic underline | link | numlist bullist | alignleft aligncenter alignright alignjustify',
-      skin: 'oxide-dark',
-      content_css: 'dark',
+      skin: darkMode ? 'oxide-dark' : 'oxide',
+      content_css: darkMode ? 'dark' : 'light',
       link_assume_external_targets: true,
     })
   }, [])
