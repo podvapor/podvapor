@@ -135,8 +135,6 @@ export default function CreateEpisodeIsland(props) {
   useEffect(() => {
     const darkMode = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? true : false
 
-    console.log(darkMode)
-
     // @ts-ignore tinymce is a global browser dep
     tinymce.init({
       selector: 'textarea#notes',
