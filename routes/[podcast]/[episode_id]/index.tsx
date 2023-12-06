@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Head } from '$fresh/runtime.ts'
 import { episodes as episodesSchema, podcasts as podcastsSchema } from "../../../db/schema.ts";
 import { db } from "../../../db/db.ts";
 import { eq } from "drizzle-orm";
@@ -24,6 +25,9 @@ export const handler: Handlers = {
 
 export default function Episode(props: PageProps) {
   return <PublicLayout>
+    <Head>
+      <title>{ props.data.title } | { props.data.podcast.title }</title>
+    </Head>
     <div>
       <a href={ '/' + props.data.podcast.slug }>Back to podcast</a>
       <h1>{ props.data.title }</h1>

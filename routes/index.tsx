@@ -3,6 +3,7 @@ import { db } from "../db/db.ts";
 import { podcasts as podcastsSchema } from "../db/schema.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { SettingsService } from "../services/SettingsService.ts";
+import { Head } from '$fresh/runtime.ts'
 
 export const handler: Handlers = {
   async GET(_req, ctx) {
@@ -16,6 +17,9 @@ export const handler: Handlers = {
 export default function Home(props: PageProps) {
   return (
     <PublicLayout>
+      <Head>
+        <title>{ props.data.siteName }</title>
+      </Head>
       <h1>{ props.data.siteName }</h1>
 
       { props.data.podcasts.map((pc, pcIndex) => <div class="col-12 mt-3">

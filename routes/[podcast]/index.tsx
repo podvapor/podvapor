@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Head } from '$fresh/runtime.ts';
 import { PublicLayout } from "../../components/PublicLayout.tsx";
 import PlayerButton from "../../islands/PlayerButton.tsx";
 import { episodes as episodesSchema, podcasts as podcastsSchema } from "../../db/schema.ts";
@@ -24,6 +25,9 @@ export const handler: Handlers = {
 
 export default function Podcast(props: PageProps) {
     return <PublicLayout>
+      <Head>
+        <title>{ props.data.title }</title>
+      </Head>
       <div class="row">
         <div class="col-12 col-sm-4 col-md-3 col-lg-2">
           <img src={ props.data.coverImageUrl } class="w-100" alt="" />
