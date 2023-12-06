@@ -11,7 +11,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: Production
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
