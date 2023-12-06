@@ -3,7 +3,8 @@ import { drizzle } from 'drizzle-orm/libsql'
 import * as schema from './schema.ts'
 
 const config = {
-  url: Deno.env.get('DB_URL') as string
+  url: Deno.env.get('DB_URL') as string,
+  authToken: Deno.env.get('DB_TOKEN')
 }
 
 export const client = createClient(config)
