@@ -6,7 +6,7 @@ export function PublicLayout(props) {
   return <>
     <Head>
       <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
-      <script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+      <script src="https://cdn.plyr.io/3.6.4/plyr.js" defer></script>
       <link rel="stylesheet" href="/app.css" />
     </Head>
     <div class="container pt-3" f-client-nav>
