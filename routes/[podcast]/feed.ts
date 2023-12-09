@@ -1,8 +1,8 @@
 import { Handlers } from '$fresh/server.ts'
-import { sortByDateDescending, convertTimeForFeed } from "../../helpers.ts"
+import { convertTimeForFeed } from "../../helpers.ts"
 import { db } from "../../db/db.ts"
 import { podcasts as podcastsSchema, episodes as episodesSchema } from "../../db/schema.ts"
-import { eq } from "drizzle-orm"
+import { eq, desc } from "drizzle-orm"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -12,7 +12,8 @@ export const handler: Handlers = {
     })
 
     const episodes = await db.query.episodes.findMany({
-      where: eq(episodesSchema.podcastId, podcast.id)
+      where: eq(episodesSchema.podcastId, podcast.id),
+      orderBy: desc(episodesSchema.published)
     })
 
     const feed = `<?xml version="1.0" encoding="UTF-8"?>
@@ -38,7 +39,7 @@ export const handler: Handlers = {
 
             <itunes:explicit>${ podcast?.explicit ? 'true' : 'false' }</itunes:explicit>
             <copyright>${ podcast.copyright }</copyright>
-            ${ episodes.sort(sortByDateDescending).map(ep => {
+            ${ episodes.map(ep => {
               return `
               <item>
                 <guid isPermalink="false">${ ep.id }</guid>

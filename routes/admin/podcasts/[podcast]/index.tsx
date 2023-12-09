@@ -2,7 +2,7 @@ import { Handlers, PageProps } from '$fresh/server.ts'
 import { convertDateForWeb } from "../../../../helpers.ts"
 import { episodes as episodesSchema, podcasts as podcastsSchema } from "../../../../db/schema.ts";
 import { db } from "../../../../db/db.ts";
-import { eq } from 'drizzle-orm'
+import { eq, desc } from 'drizzle-orm'
 import { AdminLayout } from "../../../../components/AdminLayout.tsx";
 
 export const handler: Handlers = {
@@ -12,7 +12,8 @@ export const handler: Handlers = {
     })
 
     const episodes = await db.query.episodes.findMany({
-      where: eq(episodesSchema.podcastId, podcast.id)
+      where: eq(episodesSchema.podcastId, podcast.id),
+      orderBy: desc(episodesSchema.published)
     })
 
     return ctx.render({podcast, episodes})
