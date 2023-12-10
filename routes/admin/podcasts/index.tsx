@@ -1,6 +1,4 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { z } from 'zod'
-import { fromZodError, errorMap } from 'zod-validation-error'
 import vine, { SimpleMessagesProvider } from '@vinejs/vine'
 
 import { db } from "../../../db/db.ts";
@@ -29,21 +27,6 @@ export const handler: Handlers = {
       copyright: form.copyright,
       coverImageUrl: form.cover_image_url
     }
-
-    // const Podcast = z.object({
-    //   id: z.string().min(1),
-    //   title: z.string().min(1),
-    //   slug: z.string().min(1),
-    //   description: z.string().min(1),
-    //   categories: z.string().min(1).array().nonempty(),
-    //   owner: z.object({
-    //     name: z.string().min(1),
-    //     email: z.string().min(1).email()
-    //   }),
-    //   author: z.string().min(1),
-    //   copyright: z.string().min(1),
-    //   coverImageUrl: z.string().min(1).url()
-    // })
 
     vine.convertEmptyStringsToNull = true
 
