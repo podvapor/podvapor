@@ -19,6 +19,8 @@ export default function CreatePodcastIsland() {
   const [ coverImageFile, setCoverImageFile ] = useState(null)
   const coverImageFileRef = useRef(null)
 
+  const [errors, setErrors] = useState([])
+
   function addCategory() {
     setCategories(cats => [...cats, { id: uuidv4(), name: '' }])
   }
@@ -88,14 +90,24 @@ export default function CreatePodcastIsland() {
         },
         author: author,
         copyright: copyright,
-        cover_image_url: prunedCoverImageUrl.origin + prunedCoverImageUrl.pathname
+        cover_image_url: coverImageFile ? prunedCoverImageUrl.origin + prunedCoverImageUrl.pathname : null
       })
     })
 
-    window.location.href = '/admin/podcasts'
+    if (formResponse.status === 200) {
+      window.location.href = '/admin/podcasts'
+    } else {
+      setErrors(await formResponse.json())
+    }
+
   }
 
   return <>
+    { errors.length > 0 && <div class="alert alert-danger pb-0" role="alert">
+      <ul>
+        { errors.map(err => <li>{ err }</li>) }
+      </ul>
+    </div> }
     <h1>Create new podcast</h1>
     <form onSubmit={ submit }>
       <div class="row mb-3">
