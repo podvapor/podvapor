@@ -32,7 +32,7 @@ export const handler: Handlers = {
 
     vine.messagesProvider = new SimpleMessagesProvider({
       'required': '{{ field }} is required',
-      'categories.*.required': 'At least one category is required'
+      'categories.notEmpty': 'At least one category is required'
     })
 
     const Podcast = vine.object({
@@ -45,7 +45,7 @@ export const handler: Handlers = {
           category: vine.string(),
           subcategory: vine.string().nullable()
         })
-      ),
+      ).notEmpty(),
       owner: vine.object({
         name: vine.string(),
         email: vine.string().email()
