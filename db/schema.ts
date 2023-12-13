@@ -11,7 +11,7 @@ export const podcasts = sqliteTable('podcasts', {
   id: text('id').$default(() => crypto.randomUUID()).primaryKey(),
   title: text('title'),
   slug: text('slug').unique(),
-  categories: text('categories', { mode: 'json' }).$type<string[]>(),
+  categories: text('categories', { mode: 'json' }).$type<{ category: string, subcategory: string | null }[]>(),
   owner: text('owner', { mode: 'json' }).$type<{ name: string, email: string }>(),
   coverImageUrl: text('cover_image_url'),
   description: text('description'),

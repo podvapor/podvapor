@@ -1,15 +1,23 @@
 import { useEffect, useRef, useState } from "preact/hooks"
 import { v4 as uuidv4 } from 'https://esm.sh/uuid@9.0.1'
+import PodcastCategories from "../lib/PodcastCategories.ts"
+
+interface Category {
+  id: string,
+  category: string,
+  subcategory: string | null
+}
 
 export default function CreatePodcastIsland() {
   const [ id, setId ] = useState(uuidv4())
   const [ title, setTitle ] = useState('')
   const [ slug, setSlug ] = useState('')
   const [ description, setDescription ] = useState('')
-  const [ categories, setCategories ] = useState([
+  const [ categories, setCategories ] = useState<Category[]>([
     {
       id: uuidv4(),
-      name: ''
+      category: '',
+      subcategory: null
     }
   ])
   const [ ownerName, setOwnerName ] = useState('')
@@ -22,14 +30,24 @@ export default function CreatePodcastIsland() {
   const [errors, setErrors] = useState([])
 
   function addCategory() {
-    setCategories(cats => [...cats, { id: uuidv4(), name: '' }])
+    setCategories(cats => [...cats, { id: uuidv4(), category: '', subcategory: '' }])
   }
 
   function updateCategory(id: string, text: string) {
     const categoriesCopy = [...categories]
 
     const index = categoriesCopy.findIndex(cat => cat.id === id)
-    categoriesCopy[index].name = text
+    categoriesCopy[index].category = text
+    categoriesCopy[index].subcategory = null
+
+    setCategories(categoriesCopy)
+  }
+
+  function updateSubcategory(id: string, text: string) {
+    const categoriesCopy = [...categories]
+
+    const index = categoriesCopy.findIndex(cat => cat.id === id)
+    categoriesCopy[index].subcategory = text || null
 
     setCategories(categoriesCopy)
   }
@@ -45,6 +63,10 @@ export default function CreatePodcastIsland() {
 
   function setCoverImageFileRef(e) {
     setCoverImageFile(e.target.files[0])
+  }
+
+  function getSubcategories(primaryCategory: string) {
+    return PodcastCategories[PodcastCategories.findIndex(primCat => primCat.category === primaryCategory)].subcategories
   }
 
   async function submit(e) {
@@ -83,7 +105,12 @@ export default function CreatePodcastIsland() {
         title: title,
         slug: slug,
         description: description,
-        categories: categories.map(cat => cat.name),
+        categories: categories.map(cat => {
+          return { 
+            category: cat.category, 
+            subcategory: cat.subcategory 
+          }
+        }),
         owner: {
           name: ownerName,
           email: ownerEmail,
@@ -125,16 +152,35 @@ export default function CreatePodcastIsland() {
         <textarea class="form-control" id="description" value={ description } onInput={ (e) => { setDescription(e.target.value) } } ></textarea>
       </div>
       <div class="mb-3">
-        <label class="form-label">Categories</label>
-        { categories.map(cat => <div class="input-group mb-2" key={ cat.id }>
-          <input type="text" class="form-control" value={ cat.name } onInput={ (e) => updateCategory(cat.id, e.target.value) } />
-          <button class="btn btn-danger" onClick={ e => { e.preventDefault(); removeCategory(cat.id) } } ><i class="bi-x-lg"></i></button>
+
+        { categories.map(cat => <div class="row mb-3 align-items-end" key={ cat.id }>  
+          <div class="col-12 col-sm-5">
+            <label class="form-label">Primary Category</label>
+            <select class="form-select" onChange={ e => updateCategory(cat.id, e.target.value) }>
+              <option value={''} selected={ cat.category === '' } disabled>Please select a category (required)</option>
+              { PodcastCategories.map(primCat => <option value={ primCat.category } disabled={ categories.map(cat => cat.category).includes(primCat.category) }>{ primCat.category }</option>) }
+            </select>
+          </div>
+          { (
+              cat.category 
+              && getSubcategories(cat.category).length > 0
+            ) && <div class="col-12 col-sm-6">
+              <label class="form-label">Secondary Category</label>
+              <select onChange={ e => updateSubcategory(cat.id, e.target.value) } class="form-select">
+                <option value={''} selected={ cat.subcategory === null }>Select a secondary category (optional)</option>
+                { getSubcategories(cat.category).map(subCat => <option value={ subCat }>{ subCat }</option>) }
+              </select>
+            </div> }
+          <div class="col-12 col-sm-1">
+            <button onClick={ (e) => { e.preventDefault(); removeCategory(cat.id) } } class="btn btn-danger"><i class="bi-x-lg" /></button>
+          </div>
         </div>) }
-        
-        <button class="btn btn-success" onClick={ e => { e.preventDefault(); addCategory() } }>
+
+        { categories.length < 2 && <button class="btn btn-success" onClick={ e => { e.preventDefault(); addCategory() } }>
           <i class="bi-plus-lg"></i>
           Add Category
-        </button>
+        </button> }
+        
       </div>
       <div class="row mb-3">
         <div class="col-12 col-sm-6">

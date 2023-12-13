@@ -3,6 +3,7 @@ import { convertTimeForFeed } from "../../helpers.ts"
 import { db } from "../../db/db.ts"
 import { podcasts as podcastsSchema, episodes as episodesSchema } from "../../db/schema.ts"
 import { eq, desc } from "drizzle-orm"
+import escape from 'npm:lodash.escape'
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -27,7 +28,11 @@ export const handler: Handlers = {
             <link>${ Deno.env.get('DOMAIN') }/${ podcast.slug }</link>
 
             ${ podcast.categories.map(ct => {
-              return `<itunes:category text="${ ct }" />`
+              if (ct.subcategory) {
+                return `<itunes:category text="${ escape(ct.category) }"><itunes:category text="${ escape(ct.subcategory) }" /></itunes:category>`
+              } else {
+                return `<itunes:category text="${ escape(ct.category) }" />`
+              }
             }).join('') }
 
             <itunes:owner>

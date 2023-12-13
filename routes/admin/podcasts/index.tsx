@@ -40,7 +40,12 @@ export const handler: Handlers = {
       title: vine.string(),
       slug: vine.string().regex(/^[a-z-]+$/),
       description: vine.string(),
-      categories: vine.array(vine.string()),
+      categories: vine.array(
+        vine.object({
+          category: vine.string(),
+          subcategory: vine.string().nullable()
+        })
+      ),
       owner: vine.object({
         name: vine.string(),
         email: vine.string().email()
