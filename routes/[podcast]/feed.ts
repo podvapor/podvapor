@@ -7,9 +7,6 @@ import escape from 'npm:lodash.escape'
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-
-    console.log(req)
-
     const podcast = await db.query.podcasts.findFirst({
       where: eq(podcastsSchema.slug, ctx.params.podcast)
     })
