@@ -8,6 +8,8 @@ import escape from 'npm:lodash.escape'
 export const handler: Handlers = {
   async GET(req, ctx) {
 
+    console.log(req)
+
     const podcast = await db.query.podcasts.findFirst({
       where: eq(podcastsSchema.slug, ctx.params.podcast)
     })
@@ -24,7 +26,7 @@ export const handler: Handlers = {
             <description>${ podcast.description }</description>
             <language>en-us</language>
             <itunes:summary>${ podcast.description }</itunes:summary>
-            <itunes:image href="${ podcast.coverImageUrl }" />
+            <itunes:image href="${ Deno.env.get('DOMAIN') }/${ podcast.slug }/image.png" />
             <link>${ Deno.env.get('DOMAIN') }/${ podcast.slug }</link>
 
             ${ podcast.categories.map(ct => {
