@@ -4,7 +4,6 @@
 
 import * as $_podcast_episode_id_index from "./routes/[podcast]/[episode_id]/index.tsx";
 import * as $_podcast_feed from "./routes/[podcast]/feed.ts";
-import * as $_podcast_image_png from "./routes/[podcast]/image.png.ts";
 import * as $_podcast_index from "./routes/[podcast]/index.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
@@ -37,7 +36,6 @@ const manifest = {
   routes: {
     "./routes/[podcast]/[episode_id]/index.tsx": $_podcast_episode_id_index,
     "./routes/[podcast]/feed.ts": $_podcast_feed,
-    "./routes/[podcast]/image.png.ts": $_podcast_image_png,
     "./routes/[podcast]/index.tsx": $_podcast_index,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,

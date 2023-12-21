@@ -26,7 +26,7 @@ export const handler: Handlers = {
             <description>${ podcast.description }</description>
             <language>en-us</language>
             <itunes:summary>${ podcast.description }</itunes:summary>
-            <itunes:image href="${ Deno.env.get('DOMAIN') }/${ podcast.slug }/image.png" />
+            <itunes:image href="${ podcast?.coverImageUrl }" />
             <link>${ Deno.env.get('DOMAIN') }/${ podcast.slug }</link>
 
             ${ podcast.categories.map(ct => {

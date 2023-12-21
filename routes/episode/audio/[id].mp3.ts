@@ -12,7 +12,9 @@ export const handler: Handlers = {
     return new Response(null, {
       status: 302,
       headers: {
-        location: episode?.audio?.url as string
+        location: episode?.audio?.url as string,
+        'Content-Type': episode?.audio?.type,
+        'Content-Length': episode?.audio?.length
       }
     })  
   }
